@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <script src="dist/rough.js"></script>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+
+<canvas id="canvas"/>
+
+  <script type="text/javascript">
+
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+
+let x = 50;
+window.setInterval(() => {
+  // Clear canvas
+  context.save();
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.restore();
+
+  // Draw rough shapes
+  const rc = rough.canvas(canvas);
+  rc.rectangle(x - 200, 50, 200, 50);
+  rc.rectangle(x - 175, 5, 150, 45);
+  rc.rectangle(x - 170, 10, 35, 35);
+  rc.rectangle(x - 130, 10, 35, 35);
+  rc.circle(x - 50, 100, 50, {
+    fillStyle: 'solid',
+    fill: 'white'
+  });
+  rc.circle(x - 120, 100, 50, {
+    fillStyle: 'solid',
+    fill: 'white'
+  });
+  rc.circle(x - 175, 100, 50, {
+    fillStyle: 'solid',
+    fill: 'white'
+  });
+  x++;
+}, 30);
+  
+  </script>
+</body>
+</html>
+
+
